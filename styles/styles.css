@@ -265,8 +265,8 @@ body {
 }
 
 .aboutTeam div{
-    height: 500px;
-    width: 420px;
+    /*height: 500px;*/
+    width: 20%;
 }
 
 .aboutTeam img {
