@@ -179,7 +179,6 @@ header {
 
 .service {
     width: 25%;
-    flex-basis: 25%;
     box-sizing: border-box;
     position: relative;
     background-color: ghostwhite;
