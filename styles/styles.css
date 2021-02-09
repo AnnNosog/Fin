@@ -163,12 +163,10 @@ header {
 }
 
 
-
 .row-services {
-    padding-left: 10px;
-    padding-right: 10px;
     display: flex;
-    justify-content: center;
+    /*justify-content: center;*/
+    margin-left: -8px;
     flex-wrap: wrap;
 }
 
@@ -180,15 +178,18 @@ header {
 }
 
 .service {
-    height: 310px;
-    width: 230px;
-    margin: 40px 10px;
+    width: 25%;
+    flex-basis: 25%;
     box-sizing: border-box;
     position: relative;
     background-color: ghostwhite;
     text-align: center;
-    padding-top: 10px;
+    padding: 5px 10px;
+    margin-left: 8px;
+    margin-top: 60px;
+    margin-bottom: 40px;
 }
+
 
 .title-service {
     font-size: 32px;
