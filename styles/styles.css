@@ -14,6 +14,8 @@ body {
     padding-right: 10%;
 }
 
+/*Header*/
+
 header {
     padding-left: 10%;
     padding-right: 10%;
@@ -63,11 +65,380 @@ header {
     line-height: 1.2;
 }
 
-@media (max-width: 450px) {
+.navi {display: none;}
+
+@media (max-width: 1100px) {
     .navigation-list {
         display: none;
     }
+
+    .navi {
+
+        display: block;
+        width: 300px;
+        min-width: 300px;
+        /* фиксируем и выставляем высоту панели на максимум */
+        /*height: 75%;*/
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        margin: 0;
+        /* сдвигаем (прячем) панель относительно правого края страницы */
+        right: -320px;
+        /* внутренние отступы */
+        /*padding: 15px 20px;*/
+        /* плавный переход смещения панели */
+        -webkit-transition: right 0.3s;
+        -moz-transition: right 0.3s;
+        transition: right 0.3s;
+        /* определяем цвет фона панели */
+        background: rgb(118, 195, 143);
+        /* поверх других элементов */
+        z-index: 2000;
+    }
+
+
+    /**
+     * Кнопка переключения панели
+     * тег <label>
+     */
+
+    .nav-toggle {
+        /* абсолютно позиционируем */
+        position: absolute;
+
+        /* относительно правого края панели */
+        right: 320px;
+        /* отступ от верхнего края панели */
+        top: 1em;
+        /* внутренние отступы */
+        padding: 0.5em;
+        /* определяем цвет фона переключателя
+         * чаще вчего в соответствии с цветом фона панели
+        */
+        background: inherit;
+        /* цвет текста */
+        color: #dadada;
+        /* вид курсора */
+        cursor: pointer;
+        /* размер шрифта */
+        font-size: 1.2em;
+        line-height: 1;
+        /* всегда поверх других элементов страницы */
+        z-index: 2001;
+        /*!* анимируем цвет текста при наведении *!*/
+        /*-webkit-transition: color .25s ease-in-out;*/
+        /*-moz-transition: color .25s ease-in-out;*/
+        /*transition: color .25s ease-in-out;*/
+    }
+
+
+    /* определяем текст кнопки
+     * символ Unicode (TRIGRAM FOR HEAVEN)
+    */
+
+    .nav-toggle:after {
+        content: '\2630';
+        text-decoration: none;
+    }
+
+
+    /* цвет текста при наведении */
+
+    .nav-toggle:hover {
+        color: #f4f4f4;
+    }
+
+
+    /**
+     * Скрытый чекбокс (флажок)
+     * невидим и недоступен :)
+     * имя селектора атрибут флажка
+     */
+
+    [id='nav-toggle'] {
+        position: absolute;
+        display: none;
+    }
+
+
+    /**
+     * изменение положения переключателя
+     * при просмотре на мобильных устройствах
+     * когда навигация раскрыта, распологаем внутри панели
+    */
+
+    [id='nav-toggle']:checked ~ .navi > .nav-toggle {
+        left: auto;
+        right: 2px;
+        top: 1em;
+    }
+
+
+    /**
+     * Когда флажок установлен, открывается панель
+     * используем псевдокласс:checked
+     */
+
+    [id='nav-toggle']:checked ~ .navi {
+        right: 0;
+        box-shadow:-4px 0px 20px 0px rgba(0,0,0, 0.5);
+        -moz-box-shadow:-4px 0px 20px 0px rgba(0,0,0, 0.5);
+        -webkit-box-shadow:-4px 0px 20px 0px rgba(0,0,0, 0.5);
+        overflow-y: auto;
+    }
+
+
+    /*
+     * смещение контента страницы
+     * на размер ширины панели,
+     * фишка необязательная, на любителя
+    */
+
+    [id='nav-toggle']:checked ~ main > article {
+        -webkit-transform: translateX(-320px);
+        -moz-transform: translateX(-320px);
+        transform: translateX(-320px);
+    }
+
+
+    /*
+     * изменение символа переключателя,
+     * привычный крестик (MULTIPLICATION X),
+     * вы можете испльзовать любой другой значок
+    */
+
+    [id='nav-toggle']:checked ~ .navi > .nav-toggle:after {
+        content: '\2715';
+    }
+
+
+    /**
+     * позаботьтимся о средних и маленьких экранах
+     * мобильных устройств
+     */
+
+    @media screen and (min-width: 320px) {
+        html,
+        body {
+            margin: 0;
+            overflow-x: hidden;
+        }
+    }
+
+    @media screen and (max-width: 320px) {
+        html,
+        body {
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .navi {
+            width: 100%;
+            box-shadow: none
+        }
+    }
+
+
+    /**
+     * Формируем стиль заголовка (логотип) панели
+    */
+
+    .navi h2 {
+        width: 90%;
+        padding: 0;
+        margin: 10px 0;
+        text-align: center;
+        text-shadow: rgba(255, 255, 255, .1) -1px -1px 1px, rgba(0, 0, 0, .5) 1px 1px 1px;
+        font-size: 1.3em;
+        line-height: 1.3em;
+        opacity: 0;
+        transform: scale(0.1, 0.1);
+        -ms-transform: scale(0.1, 0.1);
+        -moz-transform: scale(0.1, 0.1);
+        -webkit-transform: scale(0.1, 0.1);
+        transform-origin: 0% 0%;
+        -ms-transform-origin: 0% 0%;
+        -moz-transform-origin: 0% 0%;
+        -webkit-transform-origin: 0% 0%;
+        transition: opacity 0.8s, transform 0.8s;
+        -ms-transition: opacity 0.8s, -ms-transform 0.8s;
+        -moz-transition: opacity 0.8s, -moz-transform 0.8s;
+        -webkit-transition: opacity 0.8s, -webkit-transform 0.8s;
+    }
+
+    .navi h2 a {
+        color: #dadada;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+
+    /*плавное появление заголовка (логотипа) при раскрытии панели */
+
+    [id='nav-toggle']:checked ~ .navi h2 {
+        opacity: 1;
+        transform: scale(1, 1);
+        -ms-transform: scale(1, 1);
+        -moz-transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+    }
+
+
+    /**
+     * формируем непосредственно само меню
+     * используем неупорядоченный список для пунктов меню
+     * прикрутим трансфомации и плавные переходы
+     */
+
+    .navi > ul {
+        display: block;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .navi > ul > li {
+        line-height: 2.5;
+        opacity: 0;
+        -webkit-transform: translateX(50%);
+        -moz-transform: translateX(50%);
+        -ms-transform: translateX(50%);
+        transform: translateX(50%);
+        -webkit-transition: opacity .5s .1s, -webkit-transform .5s .1s;
+        -moz-transition: opacity .5s .1s, -moz-transform .5s .1s;
+        -ms-transition: opacity .5s .1s, -ms-transform .5s .1s;
+        transition: opacity .5s .1s, transform .5s .1s;
+    }
+
+    [id='nav-toggle']:checked ~ .navi > ul > li {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);
+    }
+
+
+    /* определяем интервалы появления пунктов меню */
+
+    .navi > ul > li:nth-child(2) {
+        -webkit-transition: opacity .5s .2s, -webkit-transform .5s .2s;
+        transition: opacity .5s .2s, transform .5s .2s;
+    }
+
+    .navi > ul > li:nth-child(3) {
+        -webkit-transition: opacity .5s .3s, -webkit-transform .5s .3s;
+        transition: opacity .5s .3s, transform .5s .3s;
+    }
+
+    .navi > ul > li:nth-child(4) {
+        -webkit-transition: opacity .5s .4s, -webkit-transform .5s .4s;
+        transition: opacity .5s .4s, transform .5s .4s;
+    }
+
+    .navi > ul > li:nth-child(5) {
+        -webkit-transition: opacity .5s .5s, -webkit-transform .5s .5s;
+        transition: opacity .5s .5s, transform .5s .5s;
+    }
+
+    .navi > ul > li:nth-child(6) {
+        -webkit-transition: opacity .5s .6s, -webkit-transform .5s .6s;
+        transition: opacity .5s .6s, transform .5s .6s;
+    }
+
+    .navi > ul > li:nth-child(7) {
+        -webkit-transition: opacity .5s .7s, -webkit-transform .5s .7s;
+        transition: opacity .5s .7s, transform .5s .7s;
+    }
+
+
+    /**
+     * оформление ссылок пунктов меню
+     */
+
+    .navi > ul > li > a {
+        display: inline-block;
+        position: relative;
+        padding: 0;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 300;
+        font-size: 1.2em;
+        color: #dadada;
+        width: 100%;
+        text-decoration: none;
+        /* плавный переход */
+        -webkit-transition: color .5s ease, padding .5s ease;
+        -moz-transition: color .5s ease, padding .5s ease;
+        transition: color .5s ease, padding .5s ease;
+    }
+
+
+    /**
+     * состояние ссылок меню при наведении
+     */
+
+    .navi > ul > li > a:hover,
+    .navi > ul > li > a:focus {
+        color: white;
+        padding-left: 15px;
+    }
+
+
+    /**
+     * линия подчеркивания ссылок меню
+     */
+
+    .navi > ul > li > a:before {
+        content: '';
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        width: 100%;
+        -webkit-transition: width 0s ease;
+        transition: width 0s ease;
+    }
+
+    .navi > ul > li > a:after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 1px;
+        width: 100%;
+        background: #3bc1a0;
+        -webkit-transition: width .5s ease;
+        transition: width .5s ease;
+    }
+
+
+    /**
+     * анимируем линию подчеркивания
+     * ссылок при наведении
+     */
+
+    .navi > ul > li > a:hover:before {
+        width: 0%;
+        background: #3bc1a0;
+        -webkit-transition: width .5s ease;
+        transition: width .5s ease;
+    }
+
+    .navi > ul > li > a:hover:after {
+        width: 0%;
+        background: transparent;
+        -webkit-transition: width 0s ease;
+        transition: width 0s ease;
+    }
+
+
+
+
 }
+
+
 
 .navigation-bar a {
     text-decoration: none;
@@ -80,29 +451,43 @@ header {
     background-color: rgb(118, 195, 143);
 }
 
+
+/*Slider*/
+
 .slider {
-    height: 520px;
+    /*height: 520px;*/
     background-color: dimgray;
     opacity: 0.7;
-    /*padding: 0 10% 0 10%;*/
 }
 
 .my-slider {
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*flex-wrap: wrap;*/
+
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
+    align-items: center;
+    /*margin-bottom: 10px;*/
+
 }
 
-.my-slider div{
-    padding-right: 10%;
-    flex-basis: 40%;
+.text-slider{
     box-sizing: border-box;
-    position: relative;
+    /*margin-bottom: 40px;*/
+    padding: 10px;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
 }
 
-.text-slider {
-    margin-top: 3%;
+
+
+.decription-slider {
+    padding: 0 5% 0 10%;
 }
+
 
 .title-text-slider {
     font-size: 46px;
@@ -119,17 +504,22 @@ header {
     align-items: center;
 }
 
-.img-slider {
-    width: 380px;
-    height: 380px;
+.round {
+    display: flex;
+    max-width: 590px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.img-slider img{
-    min-width: auto;
-    min-height: auto;
-    height: 100%;
+.img-slider {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 70%;
     border: 25px solid rgb(51, 51, 51);
-    border-radius: 210px;
+    border-radius: 50%;
 }
 
 .button-read {
@@ -143,31 +533,32 @@ header {
     width: 145px;
 }
 
-.prev, .next {
-    cursor: pointer;
+.prev {
     position: absolute;
-    top: 55%;
-    width: auto;
-    margin-top: -200px;
-    padding: 16px;
     color: rgb(118, 195, 143);
     font-weight: bold;
     font-size: 50px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
+    left: 10%;
+    top: 35%;
 }
 
 .next {
-    right: 15%;
-    border-radius: 3px 0 0 3px;
+    position: absolute;
+    color: rgb(118, 195, 143);
+    font-weight: bold;
+    font-size: 50px;
+    right: 10%;
+    top: 35%;
 }
 
+/*Service*/
 
 .row-services {
     display: flex;
-    /*justify-content: center;*/
-    margin-left: -8px;
+    justify-content: space-between;
     flex-wrap: wrap;
+    margin-bottom: 10px;
+    margin-top: 60px;
 }
 
 .services img{
@@ -178,17 +569,30 @@ header {
 }
 
 .service {
-    width: 25%;
     box-sizing: border-box;
-    position: relative;
     background-color: ghostwhite;
     text-align: center;
-    padding: 5px 10px;
-    margin-left: 8px;
-    margin-top: 60px;
     margin-bottom: 40px;
+    padding: 5px;
+    width: calc(1/4*100% - (1 - 1/4)*20px);
 }
 
+@media (max-width: 1100px) {
+    .service {
+        width: calc(1/2*100% - (1 - 1/2)*40px);
+    }
+}
+
+@media (max-width: 650px) {
+    .service {
+        width: 100%;
+    }
+
+    .services img {
+        height: 80px;
+        width: 80px;
+    }
+}
 
 .title-service {
     font-size: 32px;
@@ -212,7 +616,7 @@ header {
     filter: invert(100%);
 }
 
-/**/
+/*Latest work*/
 
 .title-latest-work {
     overflow: hidden;
@@ -247,21 +651,24 @@ header {
 }
 
 .row-latest-work {
-    padding-left: 10px;
-    padding-right: 10px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
+    margin-bottom: 10px;
+    margin-top: 60px;
+    /*padding-left: 10px;*/
+    /*padding-right: 10px;*/
 }
 
 .latest {
-    margin: 20px;
-    /*flex-basis: 20%;*/
-    box-sizing: border-box;
-    position: relative;
     border: 5px solid rgb(255, 255, 255);
-    height: 200px;
-    width: 300px;
+    box-sizing: border-box;
+    background-color: ghostwhite;
+    text-align: center;
+    margin-bottom: 40px;
+    width: calc(1/3*100% - (1 - 1/3)*30px);
+    position: relative;
+    /*z-index: -1;*/
 }
 
 .latest img {
@@ -275,8 +682,7 @@ header {
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
     text-align: center;
-    padding: 2% 0;
-    font-size: 14px;
+    justify-content: center;
     width: 100%;
     bottom: 0;
 }
@@ -293,15 +699,32 @@ header {
     display: none;
 }
 
+@media (max-width: 1100px) {
+    .latest {
+        width: calc(1/2*100% - (1 - 1/2)*40px);
+    }
+}
+
+@media (max-width: 650px) {
+    .latest {
+        width: 100%;
+    }
+
+}
+
+
+/*About*/
+
 .about-us {
     /*padding: 30px 200px 0 200px;*/
     background-color: #313131;
     height: 400px;
+    color: rgb(151, 151, 151);
 }
 
 .row-about-us {
-    padding-left: 10px;
-    padding-right: 10px;
+    /*padding-left: 10px;*/
+    /*padding-right: 10px;*/
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -314,14 +737,54 @@ header {
     padding: 0 50px 0 0;
 }
 
+.title-about {
+    margin-bottom: 30px;
+}
+
+.about-p {
+    color: rgb(118, 195, 143);
+    font-size: 14px;
+}
+
+.text-admin {
+    font-size: 12px;
+}
+
+.text-blog {
+    font-size: 14px;
+}
+
+.green-text {
+    color: rgb(118, 195, 143);
+}
+
+
+.button-read-about{
+    background-color: transparent;
+    border-style: none;
+    text-align: center;
+    font-size: 13px;
+    color: rgb(118, 195, 143);
+}
+
+.list-quick {
+    padding-left: 15px;
+}
+
+.list-quick li{
+    border-bottom: 1px solid rgb(151, 151, 151);
+    padding: 5px;
+    font-size: 14px;
+    color: rgb(118, 195, 143);
+}
+
 
 /*/*/
 
-input[type=text], select, textarea {
+input[type=text], textarea {
     width: 80%;
     padding: 10px;
-    border: 1px solid #ccc;
-    /*margin-top: 6px;*/
+    border: none;
     margin-bottom: 10px;
     resize: vertical;
     border-radius: 15px;
@@ -330,11 +793,12 @@ input[type=text], select, textarea {
 
 input[type=submit] {
     background-color: rgb(118, 195, 143);
-    color: rgb(151, 151, 151);
+    color: #2a2a2a;
     padding: 12px 20px;
     border: none;
     cursor: pointer;
     border-radius: 15px;
+    font-weight: bold;
 }
 
 /* Clear floats after the columns */
@@ -346,7 +810,7 @@ input[type=submit] {
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
-    .column, input[type=submit] {
+    .input[type=submit] {
         width: 100%;
         margin-top: 0;
     }
