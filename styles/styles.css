@@ -23,8 +23,7 @@ header {
     align-items: center;
     height: 85px;
     border-top: 2px solid rgb(118, 195, 143);
-    background-color: dimgray;
-    opacity: 0.7;
+    background-color: rgba(43, 43, 43, 0.7);
 }
 
 .logo a {
@@ -65,10 +64,81 @@ header {
     line-height: 1.2;
 }
 
+.navig-mini {
+    display: none;
+}
 
-@media (max-width: 1100px) {
+@media (max-width: 770px) {
     .navigation-list {
         display: none;
+    }
+
+    .navig-mini {
+        display: block;
+    }
+
+    .navig-mini ul{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navig-mini a {
+        display: block;
+        text-decoration: none;
+        outline: none;
+        transition: .4s ease-in-out;
+    }
+
+    .navig-mini {
+        backface-visibility: hidden;
+    }
+
+    .navig-mini > li {
+        display: inline-block;
+        position: relative;
+    }
+
+    .navig-mini > li > a {
+        font-weight: bold;
+        color: rgb(255, 255, 255);
+        text-transform: uppercase;
+        }
+
+        .down:after {
+        margin-left: 8px;
+    }
+
+    .navig-mini li a:hover {
+        color: rgb(118, 195, 143);
+    }
+
+    .submenu {
+        background: rgb(43, 43, 43);
+        border: 2px solid rgb(118, 195, 143);
+        border-radius: 5%;
+        position: absolute;
+        left: 0;
+        visibility: hidden;
+        opacity: 0;
+        z-index: 5;
+        transform: perspective(600px) rotateX(-90deg);
+        transform-origin: 0% 0%;
+        transition: .6s ease-in-out;
+    }
+
+    .navig-mini > li:hover .submenu{
+        visibility: visible;
+        opacity: 1;
+        transform: perspective(600px) rotateX(0deg);
+        left: -50px;
+    }
+
+    .submenu li a {
+        color: rgb(255, 255, 255);
+        font-size: 13px;
+        line-height: 36px;
+        padding: 0 10px;
     }
 }
 
@@ -83,12 +153,10 @@ header {
     background-color: rgb(118, 195, 143);
 }
 
-
 /*Slider*/
 
 .slider {
-    background-color: dimgray;
-    opacity: 0.7;
+    background-color: rgba(43, 43, 43, 0.7);
 }
 
 .my-slider {
@@ -109,7 +177,6 @@ header {
 .decription-slider {
     padding: 0 5% 0 10%;
 }
-
 
 .title-text-slider {
     font-size: 46px;
@@ -140,7 +207,7 @@ header {
     align-items: center;
     width: 70%;
     height: 70%;
-    border: 25px solid rgb(51, 51, 51);
+    border: 25px solid #6b6b6b;
     border-radius: 50%;
 }
 
@@ -155,6 +222,11 @@ header {
     width: 145px;
 }
 
+.button-read a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
 @media (max-width: 1100px) {
     .title-text-slider {
         font-size: 30px;
@@ -165,7 +237,7 @@ header {
     }
 
     .img-slider {
-        border: 15px solid rgb(51, 51, 51);
+        border: 15px solid #6b6b6b;
     }
 }
 
@@ -173,10 +245,15 @@ header {
 
     .text-slider {
         width: 100%;
+        text-align: center;
     }
 
     .img-slider {
-        border: 10px solid rgb(51, 51, 51);
+        border: 10px solid #6b6b6b;
+    }
+
+    .round {
+        justify-content: center;
     }
 }
 
@@ -252,15 +329,15 @@ header {
     text-align: center;
 }
 
-
 .title-latest-work a {
     display: inline-block;
     vertical-align: middle;
     background-color: #2a2a2a;
     border-radius: 10px;
     padding: 5px;
-    font-size: 24px;
+    font-size: 32px;
 }
+
 .title-latest-work:before,
 .title-latest-work:after {
     content: "";
@@ -271,6 +348,7 @@ header {
     background-color: #2a2a2a;
     position: relative;
 }
+
 .title-latest-work:before {
     margin-left: -100%;
 }
@@ -335,7 +413,6 @@ header {
     .latest {
         width: 100%;
     }
-
 }
 
 /*About*/
@@ -378,6 +455,7 @@ header {
 }
 
 .green-text {
+    text-decoration: none;
     color: rgb(118, 195, 143);
 }
 
@@ -389,6 +467,11 @@ header {
     color: rgb(118, 195, 143);
 }
 
+.button-read-about a{
+    text-decoration: none;
+    color: rgb(118, 195, 143);
+}
+
 .list-quick {
     padding-left: 0;
 }
@@ -397,8 +480,12 @@ header {
     border-bottom: 1px solid rgb(151, 151, 151);
     padding: 5px;
     font-size: 14px;
-    color: rgb(118, 195, 143);
     list-style-type: none;
+}
+
+.list-quick li a{
+    text-decoration: none;
+    color: rgb(118, 195, 143);
 }
 
 .list-quick li:before {
@@ -460,7 +547,6 @@ input[type=submit] {
     font-family: "Georgia";
 }
 
-/* Clear floats after the columns */
 .row:after {
     content: "";
     display: table;
