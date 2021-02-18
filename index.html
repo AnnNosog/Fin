@@ -10,19 +10,19 @@
 <header>
 
     <div class="logo">
-        <a href="#home" id="home">
-            <p>The Modernist</p>
+        <div href="#home" id="home">
+            <p class="logo-text">The Modernist</p>
             <p class="under-logo">Free PSD Website Template</p>
-        </a>
+        </div>
     </div>
 
     <div class="navigation-bar body-max">
     <nav>
         <ul class="navigation-list">
-            <li><a href="#home">HOME</a></li>
-            <li><a href="#service">SERVICE</a></li>
-            <li><a href="#works">WORKS</a></li>
-            <li><a href="#contacts">ABOUT US</a></li>
+            <li><a href="#home">home</a></li>
+            <li><a href="#service">service</a></li>
+            <li><a href="#works">works</a></li>
+            <li><a href="#contacts">about us</a></li>
         </ul>
     </nav>
     </div>
@@ -30,10 +30,10 @@
     <div class="navig-mini">
         <li><a href="#" class="down">Menu</a>
             <ul class="submenu">
-                <li><a href="#home">HOME</a></li>
-                <li><a href="#service">SERVICE</a></li>
-                <li><a href="#works">WORKS</a></li>
-                <li><a href="#contacts">ABOUT US</a></li>
+                <li><a href="#home">home</a></li>
+                <li><a href="#service">service</a></li>
+                <li><a href="#works">works</a></li>
+                <li><a href="#contacts">about us</a></li>
             </ul>
     </div>
 
@@ -73,31 +73,39 @@
     <section class="services max-wigth" id="service">
         <div class="row-services">
             <div class="service">
+                <div class="service-item">
                 <img src="assets/hg.png" alt="">
                 <p class="title-service">SERVICE TITLE</p>
                 <p class="main-text-service">Vestassapede et donec ut est libe ros sus et
                     eget sed eget quisq ueta habitur augue</p>
             </div>
+            </div>
 
             <div class="service">
+                <div class="service-item">
                 <img src="assets/sun.png" alt="">
                 <p class="title-service">SERVICE TITLE</p>
                 <p class="main-text-service">Vestassapede et donec ut est libe ros sus et
                     eget sed eget quisq ueta habitur augue</p>
+                </div>
             </div>
 
             <div class="service">
+                <div class="service-item">
                 <img src="assets/atom.svg" alt="">
                 <p class="title-service">SERVICE TITLE</p>
                 <p class="main-text-service">Vestassapede et donec ut est libe ros sus et
                     eget sed eget quisq ueta habitur augue</p>
+                </div>
             </div>
 
             <div class="service">
+                <div class="service-item">
                 <img src="assets/medal.svg" alt="">
                 <p class="title-service">SERVICE TITLE</p>
                 <p class="main-text-service">Vestassapede et donec ut est libe ros sus et
                     eget sed eget quisq ueta habitur augue</p>
+            </div>
             </div>
 
         </div>
@@ -109,34 +117,45 @@
 
         <div class="row-latest-work">
             <div class="latest">
+                <div class="latest-item">
                 <img src="assets/learn.jpg" alt="">
                 <div class="latest-description"><p>IPSUM DOLOR</p></div>
-
+            </div>
             </div>
 
             <div class="latest">
+                <div class="latest-item">
                 <img src="assets/car.jpg" alt="">
                 <div class="latest-description"><p>IPSUM DOLOR</p></div>
             </div>
+            </div>
 
             <div class="latest">
+                <div class="latest-item">
                 <img src="assets/architect.jpg" alt="">
                 <div class="latest-description"><p>IPSUM DOLOR</p></div>
             </div>
+            </div>
 
             <div class="latest">
+                <div class="latest-item">
                 <img src="assets/gitar.jpg" alt="">
                 <div class="latest-description"><p>IPSUM DOLOR</p></div>
             </div>
-
-            <div class="latest">
-                <img src="assets/flamingo.jpg" alt="">
-                <div class="latest-description"><p>IPSUM DOLOR</p></div>
             </div>
 
             <div class="latest">
+                <div class="latest-item">
+                <img src="assets/flamingo.jpg" alt="">
+                <div class="latest-description"><p>IPSUM DOLOR</p></div>
+            </div>
+            </div>
+
+            <div class="latest">
+                <div class="latest-item">
                 <img src="assets/waterfall.jpg" alt="">
                 <div class="latest-description"><p>IPSUM DOLOR</p></div>
+            </div>
             </div>
         </div>
 
@@ -146,7 +165,7 @@
         <div class="row-about-us">
             <div class="about">
                 <p class="title-about">From The Blog</p>
-                <p class="about-p" href="#home">Post Title</p>
+                <a class="about-p" href="#home">Post Title</a>
                 <p class="text-admin">
                     <a class="green-text" href="#home">Admin</a>, donainname.com
                 </p>
@@ -197,12 +216,10 @@
                     <div class="row">
                         <div class="column">
                             <form >
-
                                 <input type="text" id="fname" name="firstname" placeholder="Full Mame">
                                 <input type="text" id="mail" name="email" placeholder="Email Address">
                                 <input type="text" id="sub" name="subject" placeholder="Subject">
-
-                                <textarea id="message" name="message" placeholder="Message" style="height:70px"></textarea>
+                                <textarea id="message" name="message" placeholder="Message" ></textarea>
                                 <input type="submit" value="SUBMIT">
                             </form>
                         </div>
