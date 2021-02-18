@@ -239,6 +239,7 @@ header {
     max-width: 590px;
     width: 100%;
     box-sizing: border-box;
+    justify-content: center;
 }
 
 .img-slider {
